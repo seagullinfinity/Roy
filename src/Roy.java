@@ -32,7 +32,7 @@ public class Roy extends ClearWin{
     @Override
     public void setup(){
         super.undecoratedFrame();
-        clipix.clipBoard();
+//        clipix.clipBoard();
     }
 
     @Override
