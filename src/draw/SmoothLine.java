@@ -6,7 +6,13 @@ import processing.core.PGraphics;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class SmoothLine extends ClearWin {
+public class SmoothLine {
+
+    ClearWin p;
+
+    public SmoothLine(ClearWin p) {
+        this.p = p;
+    }
 
     PImage screenshot;
     private ArrayList <PVector> points;
@@ -23,14 +29,14 @@ public class SmoothLine extends ClearWin {
     PVector m = new PVector(0.0f, 0.0f);
 
     public void settings() {
-        fullScreen();
+        p.fullScreen();
     }
 
     public void setup() {
         points = new ArrayList <>();
-        pg = createGraphics(width, height);
+        pg = p.createGraphics(p.width, p.height);
         screenshot();
-        background(0);
+        p.background(0);
     }
 
     public void draw() {
@@ -43,7 +49,7 @@ public class SmoothLine extends ClearWin {
         // draw curve
         pg.beginShape();
         if (screenshot != null) {
-            pg.image(screenshot, 0, 0, width, height);
+            pg.image(screenshot, 0, 0, p.width, p.height);
         }
         if (points.size() > 0) {
 
@@ -60,16 +66,16 @@ public class SmoothLine extends ClearWin {
         }
         pg.endShape();
         pg.endDraw();
-        image(pg, 0, 0);
+        p.image(pg, 0, 0);
     }
 
     public void mouseMoved() {
 
         //float bend = ta.dot(60, 20, 0);
         // add point when new is distant from old
-        if (points.size() < 2 || points.get(points.size() - 2).dist(new PVector(dmouseX, dmouseY)) > markDistance) {
+        if (points.size() < 2 || points.get(points.size() - 2).dist(new PVector(p.mouseX, p.mouseY)) > markDistance) {
 
-            points.add(new PVector(mouseX, mouseY));
+            points.add(new PVector(p.mouseX, p.mouseY));
 
             // erase from back of line
             if (points.size() > maxPoints) {
@@ -77,32 +83,32 @@ public class SmoothLine extends ClearWin {
             }
         } else {
             // nudge -- update last point if too close to previous
-            points.set(points.size() - 1, new PVector(mouseX, mouseY));
+            points.set(points.size() - 1, new PVector(p.mouseX, p.mouseY));
         }
     }
 
     public void screenshot() {
         try {
-            screenshot = new PImage(new Robot().createScreenCapture(new Rectangle(0, 0, displayWidth, displayHeight)));
+            screenshot = new PImage(new Robot().createScreenCapture(new Rectangle(0, 0, p.displayWidth, p.displayHeight)));
         } catch (AWTException e) {
         }
     }
 
     public void keyPressed() {
-        if (key == ESC) {
-            exit();
+        if (p.key == p.ESC) {
+            p.exit();
         }
     }
 
     PVector m() {
-        return new PVector(mouseX, mouseY);
+        return new PVector(p.mouseX, p.mouseY);
     }
 
     PVector mta() {
-        return new PVector(tan(mouseX), tan(mouseY));
+        return new PVector(PApplet.tan(p.mouseX), PApplet.tan(p.mouseY));
     }
 
     PVector dta() {
-        return new PVector(tan(dmouseX), tan(dmouseY));
+        return new PVector(PApplet.tan(p.mouseX), PApplet.tan(p.mouseY));
     }
 }
