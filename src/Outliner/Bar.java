@@ -1,5 +1,5 @@
+package Outliner;
 import processing.core.PGraphics;
-
 import java.awt.*;
 
 public class Bar extends ClearWin{

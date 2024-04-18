@@ -1,3 +1,4 @@
+package Outliner;
 import processing.core.PApplet;
 import processing.core.PGraphics;
 

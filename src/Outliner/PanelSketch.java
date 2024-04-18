@@ -1,3 +1,5 @@
+package Outliner;
+
 import java.awt.*;
 
 public class PanelSketch extends ClearWin {

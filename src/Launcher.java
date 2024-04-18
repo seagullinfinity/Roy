@@ -1,9 +1,9 @@
 //import applet.ClearWin;
 import processing.core.PApplet;
 
-public class Launcher extends ClearWin {
+public class Launcher extends Outliner.ClearWin {
     public static void main(String[] args) {
-        PApplet.main("Bar");
-        PApplet.main("PanelSketch");
+        PApplet.main("Outliner.Bar");
+        PApplet.main("Outliner.PanelSketch");
     }
 }

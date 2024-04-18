@@ -7,9 +7,9 @@ import refapp.ImageBoard;
 import java.awt.*;
 
 public class Roy extends ClearWin{
-//    public static void main(String[] args) {
-//        ClearWin.main(java.lang.invoke.MethodHandles.lookup().lookupClass());
-//    }
+    public static void main(String[] args) {
+        ClearWin.main(java.lang.invoke.MethodHandles.lookup().lookupClass());
+    }
 
     RefApp refapp;
     ClearWin clearwin;

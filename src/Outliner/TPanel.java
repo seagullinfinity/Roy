@@ -1,3 +1,4 @@
+package Outliner;
 import javax.swing.*;
 import java.awt.*;
 
